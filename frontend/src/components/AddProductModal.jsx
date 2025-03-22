@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useProductStore } from "../store/useProductStore";
 import {
   Package2Icon, // Changed from Package2
@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 const AddProductModal = () => {
-  const { formData, setFormData, addProduct, loading } = useProductStore();
+  const { formData, setFormData, addProduct, loading,resetFormData } = useProductStore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +20,11 @@ const AddProductModal = () => {
     e.preventDefault();
     document.getElementById("add_product_modal").close();
   };
+
+  useEffect(() => {
+    resetFormData();
+  }, [resetFormData]);
+
   return (
     <dialog id="add_product_modal" className="modal">
       <div className="modal-box">
