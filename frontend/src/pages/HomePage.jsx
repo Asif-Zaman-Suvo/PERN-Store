@@ -5,7 +5,12 @@ import ProductCard from "../components/ProductCard";
 import AddProductModal from "../components/AddProductModal";
 
 const HomePage = () => {
-  const { products, isLoading, error, fetchProducts } = useProductStore();
+  const { products, isLoading, error, fetchProducts,resetFormData } = useProductStore();
+
+  const handleAddProduct = () => {
+    resetFormData();
+    document.getElementById("add_product_modal").showModal();
+  };
 
   useEffect(() => {
     fetchProducts();
@@ -17,7 +22,7 @@ const HomePage = () => {
     <main className="max-w-6xl mx-auto px-4 py-8 ">
       <div className="flex justify-between items-center mb-8">
         <button
-          onClick={() => document.getElementById("add_product_modal").showModal()}
+          onClick={handleAddProduct}
           className="btn btn-primary"
         >
           <PlusCircleIcon className="size-5 mr-2" />

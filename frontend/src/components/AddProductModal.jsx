@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useProductStore } from "../store/useProductStore";
 import {
-  Package2Icon, // Changed from Package2
-  DollarSignIcon, // Changed from DollarSign
-  ImageIcon, // Changed from Image
-  PlusCircleIcon, // Changed from PlusCircle
+  Package2Icon,
+  DollarSignIcon,
+  ImageIcon,
+  PlusCircleIcon,
 } from "lucide-react";
 
 const AddProductModal = () => {
@@ -18,12 +18,9 @@ const AddProductModal = () => {
 
   const handleCancel = (e) => {
     e.preventDefault();
+    resetFormData();
     document.getElementById("add_product_modal").close();
   };
-
-  useEffect(() => {
-    resetFormData();
-  }, [resetFormData]);
 
   return (
     <dialog id="add_product_modal" className="modal">
@@ -39,7 +36,6 @@ const AddProductModal = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid gap-6">
-            {/* PRODUCT NAME INPUT */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-base font-medium">
@@ -48,7 +44,6 @@ const AddProductModal = () => {
               </label>
               <div className="flex items-center gap-2 border rounded-lg px-3">
                 <Package2Icon className="w-5 h-5 text-neutral-content" />
-
                 <input
                   type="text"
                   placeholder="Enter product name"
@@ -61,7 +56,6 @@ const AddProductModal = () => {
               </div>
             </div>
 
-            {/* PRODUCT PRICE INPUT */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-base font-medium">Price</span>
@@ -82,7 +76,6 @@ const AddProductModal = () => {
               </div>
             </div>
 
-            {/* PRODUCT IMAGE */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-base font-medium">
@@ -104,7 +97,6 @@ const AddProductModal = () => {
             </div>
           </div>
 
-          {/* MODAL ACTIONS */}
           <div className="modal-action">
             <button
               type="button"
@@ -134,7 +126,6 @@ const AddProductModal = () => {
         </form>
       </div>
 
-      {/* BACKDROP */}
       <div
         className="modal-backdrop"
         onClick={() => document.getElementById("add_product_modal").close()}
